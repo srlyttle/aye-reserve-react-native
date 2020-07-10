@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"ayereservereactnativf492c1a8": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
