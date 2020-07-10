@@ -1,0 +1,1 @@
+Add amplify authentication using Authenticator, add a context and custom hook to share user state to account screen
