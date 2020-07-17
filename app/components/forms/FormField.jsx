@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useFormikContext } from 'formik';
 
 import TextInput from '../TextInput';
@@ -15,6 +16,7 @@ const AppFormField = ({ name, width, ...otherProps }) => {
         width={width}
         {...otherProps}
       />
+
       <ErrorMessage error={errors[name]} visible={touched[name]} />
     </>
   );

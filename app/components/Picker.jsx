@@ -14,7 +14,7 @@ import defaultStyles from '../config/styles';
 import PickerItem from './PickerItem';
 import Screen from './Screen';
 
-function AppPicker({
+const AppPicker = ({
   icon,
   items,
   numberOfColumns = 1,
@@ -23,7 +23,7 @@ function AppPicker({
   placeholder,
   selectedItem,
   width = '100%',
-}) {
+}) => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -72,7 +72,7 @@ function AppPicker({
       </Modal>
     </>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

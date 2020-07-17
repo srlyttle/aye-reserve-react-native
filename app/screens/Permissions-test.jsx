@@ -4,7 +4,7 @@ import useLocation from '../hooks/useLocation';
 
 function testPermissions(props) {
   const location = useLocation();
-  console.log('location 2', location);
+  console.log('location', location);
   return <View style={styles.container}></View>;
 }
 

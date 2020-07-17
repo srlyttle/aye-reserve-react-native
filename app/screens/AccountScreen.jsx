@@ -30,8 +30,8 @@ const menuItems = [
 
 function AccountScreen({ navigation }) {
   const { setCurrentUser, currentUser } = React.useContext(UserContext);
-
-  const email = currentUser.attributes.email;
+  const email =
+    currentUser && currentUser.userDetails && currentUser.userDetails.email;
   const signout = async () => {
     await Auth.signOut();
     setCurrentUser(null);
@@ -40,10 +40,12 @@ function AccountScreen({ navigation }) {
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
-        <ListItem
-          subTitle={email}
-          //image={require('../assets/simon.png')} // TODO: implement avatar
-        />
+        {email && (
+          <ListItem
+            subTitle={email}
+            //image={require('../assets/simon.png')} // TODO: implement avatar
+          />
+        )}
       </View>
       <View style={styles.container}>
         <FlatList
