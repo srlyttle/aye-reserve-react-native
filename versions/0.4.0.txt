@@ -1,0 +1,6 @@
+Add amplify api, add basic interim register screen to allow user to set user type, ie venue or normal user
+This screen will show only on first entry
+
+Basic user infor stored in userDetails, which is addvia the user contexted to the user object from app.js and passed 
+
+TODO : Add spinner for change between screen fetching user details required
