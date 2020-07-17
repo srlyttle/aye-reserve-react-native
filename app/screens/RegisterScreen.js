@@ -1,61 +1,66 @@
-import React from "react";
-import { StyleSheet } from "react-native";
-import * as Yup from "yup";
+import React, { useState, useContext } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import * as Yup from 'yup';
+import UserContext from '../context/UserContext';
 
-import Screen from "../components/Screen";
+import Screen from '../components/Screen';
+
 import {
-  AppForm as Form,
+  Form,
   AppFormField as FormField,
   SubmitButton,
-} from "../components/forms";
+  SwitchField,
+} from '../components/forms';
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required().label("Name"),
-  email: Yup.string().required().email().label("Email"),
-  password: Yup.string().required().min(4).label("Password"),
+  name: Yup.string().required().label('Display Name'),
 });
 
-function RegisterScreen() {
+const RegisterScreen = ({ navigation }) => {
+  const [error, setError] = useState();
+  const { updateUserDetails } = useContext(UserContext);
+
+  const handleSubmit = async (userInfo) => {
+    updateUserDetails(userInfo);
+  };
   return (
     <Screen style={styles.container}>
       <Form
-        initialValues={{ name: "", email: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        initialValues={{ name: '', isVenue: false }}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <FormField
-          autoCorrect={false}
-          icon="account"
-          name="name"
-          placeholder="Name"
-        />
-        <FormField
-          autoCapitalize="none"
-          autoCorrect={false}
-          icon="email"
-          keyboardType="email-address"
-          name="email"
-          placeholder="Email"
-          textContentType="emailAddress"
-        />
-        <FormField
-          autoCapitalize="none"
-          autoCorrect={false}
-          icon="lock"
-          name="password"
-          placeholder="Password"
-          secureTextEntry
-          textContentType="password"
-        />
-        <SubmitButton title="Register" />
+        <>
+          <FormField
+            autoCorrect={false}
+            name="name"
+            placeholder="Display Name"
+          />
+          <View style={styles.switchRow}>
+            <Text style={styles.venueText}>Are you a venue ?</Text>
+            <SwitchField name="isVenue" />
+          </View>
+          <SubmitButton title="Continue" />
+        </>
       </Form>
     </Screen>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+  },
+  switchRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingBottom: 20,
+  },
+  venueText: {
+    // backgroundColor: 'red',
+    paddingHorizontal: 15,
+    fontSize: 20,
   },
 });
 

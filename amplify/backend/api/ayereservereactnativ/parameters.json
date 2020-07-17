@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "ayereservereactnativ",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authayereservereactnativf492c1a8",
+            "Outputs.UserPoolId"
+        ]
+    }
+}
